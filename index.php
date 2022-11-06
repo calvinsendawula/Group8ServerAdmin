@@ -39,55 +39,30 @@
                         <h3>Name</h3>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-3 my-3">
-                        <h3>129277</h3>
-                    </div>
-                    <div class="col-9 my-3">
-                        <h3>Bosibori Cindy Sydney</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3 my-3">
-                        <h3>135012</h3>
-                    </div>
-                    <div class="col-9 my-3">
-                        <h3>Wasike Jean Gloria</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3 my-3">
-                        <h3>136047</h3>
-                    </div>
-                    <div class="col-9 my-3">
-                        <h3>Sendawula Calvin Jonathan</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3 my-3">
-                        <h3>131590</h3>
-                    </div>
-                    <div class="col-9 my-3">
-                        <h3>Kendi Njeru</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3 my-3">
-                        <h3>134022</h3>
-                    </div>
-                    <div class="col-9 my-3">
-                        <h3>Mwikali Assumpta</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-3 my-3">
-                        <h3>136809</h3>
-                    </div>
-                    <div class="col-9 my-3">
-                        <h3>Fleskine Omondi</h3>
-                    </div>
-                </div>
-                <a class="btn btn-outline-success" href="page2.php">Invert Color</a>
+                <?php
+                    require_once("phpMethods.php");
+
+                    $sql="SELECT * FROM tbl_member";
+                    $result = getDataRows($sql);
+                    if(!empty($result)){
+                        $varRows = count($result);
+                        for($i=0; $i<$varRows; $i++){
+                            $varStudentNo = $result[$i]['studentID'];
+                            $varStudentName = $result[$i]['studentName'];
+                            ?>            
+                                <div class="row">
+                                    <div class="col-3 my-3">
+                                        <h3><?php echo($varStudentNo); ?></h3>
+                                    </div>
+                                    <div class="col-9 my-3">
+                                        <h3><?php echo($varStudentName); ?></h3>
+                                    </div>
+                                </div>
+                            <?php
+                        }
+                    }
+                ?>
+                <a class="btn btn-outline-warning" href="add.php">Add member</a>
             </div>
         </div>
     </div>   
